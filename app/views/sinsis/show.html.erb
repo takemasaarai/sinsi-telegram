@@ -12,7 +12,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= @sinsi.picture %>
+  <%= image_tag(@sinsi.picture_url, width: 600) if @sinsi.picture.present? %>
 </p>
 
 <%= link_to 'Edit', edit_sinsi_path(@sinsi) %> |
