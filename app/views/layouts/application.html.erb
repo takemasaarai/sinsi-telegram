@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+
+    <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle! %>
+    <!-- <%= "今日のあなたの運勢は、#{omikuji[0]}です！" %> -->
+
   <head>
     <title>Sinsi Telegram | <%= "now page" %></title>
     <%= csrf_meta_tags %>
@@ -13,6 +17,7 @@
   </head>
 
   <body>
+
     <!-- Header -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -25,7 +30,7 @@
           </button>
 
           <!-- Logo -->
-          <a href='/'><%= image_tag 'sakura.png', :size => '50x50', :class => 'sakura' %></a>
+          <a href='/'><%= image_tag 'sakura.png', :size => '50x50', :id => 'sakura' %></a>
           <a class="navbar-brand" href="/">Sinsi Telegram</a>
         </div>
 
@@ -62,6 +67,8 @@
       <!-- Commmon -->
       <%= yield %>
     </div>
+
+    <div id="omikuji"><h3><%= "大吉が出ました！ソースコードを見てみてね！" if omikuji[0] == "大吉" %></h3></div>
 
     <!-- Footer -->
     <footer>

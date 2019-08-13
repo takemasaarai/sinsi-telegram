@@ -14,8 +14,13 @@ nav.navbar {
 div.navbar-header { padding: 10px 0 }
 .navbar a.brand > img { font-size: 20px; }
 
-.sakura {
+#sakura {
   float: left;
+}
+
+#omikuji {
+  text-align: center;
+  background-color: aquamarine;
 }
 
 .navbar a.brand:hover {

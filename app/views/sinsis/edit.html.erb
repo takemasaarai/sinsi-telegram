@@ -2,5 +2,5 @@
 
 <%= render 'form', sinsi: @sinsi %>
 
-<%= link_to '詳細', @sinsi %> |
-<%= link_to '戻る', sinsis_path %>
+<%= link_to '戻る', @sinsi %> |
+<%= link_to '削除する', @sinsi, data: { confirm: '本当に削除しますか？' }, method: :delete %>

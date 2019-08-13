@@ -4,7 +4,7 @@
   <div class="row">
     <% group.compact.each do |sinsi| %>
       <div class="col-md-4">
-        <h4><b></b><%= link_to sinsi.title, sinsi %> | 投稿日 <%= @sinsi.created_at.to_s.chop.chop.chop %></h4>
+        <h4><b></b><%= link_to sinsi.title, sinsi %> | 投稿日 <%= sinsi.created_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop %></h4>
         <%= image_tag sinsi.picture_url(:thumb) if sinsi.picture.present? %>
       </div>
     <% end %>
