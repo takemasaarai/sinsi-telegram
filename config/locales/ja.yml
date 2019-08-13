@@ -17,7 +17,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    -
+    - 
     - 1月
     - 2月
     - 3月
@@ -43,7 +43,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    -
+    - 
     - 1月
     - 2月
     - 3月
@@ -205,16 +205,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-
-attributes:
-  user:
-    name: 名前
-    email: メールアドレス
-
-  sinsi:
-    title: タイトル
-    description: 説明
-    picture: 写真
-
-  comment:
-    text: 本文

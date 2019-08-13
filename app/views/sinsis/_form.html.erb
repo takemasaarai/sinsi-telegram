@@ -2,11 +2,10 @@
   <% if sinsi.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(sinsi.errors.count, "error") %> prohibited this sinsi from being saved:</h2>
-
       <ul>
-      <% sinsi.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% sinsi.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -27,6 +26,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit data: { confirm: '確定します。よろしいですか？' } %>
   </div>
 <% end %>

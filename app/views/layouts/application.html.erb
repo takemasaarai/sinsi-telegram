@@ -25,6 +25,7 @@
           </button>
 
           <!-- Logo -->
+          <a href='/'><%= image_tag 'sakura.png', :size => '50x50', :class => 'sakura' %></a>
           <a class="navbar-brand" href="/">Sinsi Telegram</a>
         </div>
 
@@ -42,8 +43,8 @@
 
           <!-- Menu -->
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/sinsis">Sinsis</a></li>
             <li ><%= link_to 'Insert', new_sinsi_path %></li>
+            <li ><%= link_to 'Mypage', edit_user_registration_path %></li>
           </ul>
         </div>
       </div>

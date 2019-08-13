@@ -1,15 +1,17 @@
+<h2><b>タイトル: </b><%= @sinsi.title %></h2>
+<p><b>プレビュー: </b><%= @preview.impressionist_count %> 回</p>
+<p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop %></p>
+
 <div class="row">
   <div class="col-md-9">
     <%= image_tag(@sinsi.picture_url, width: '100%') if @sinsi.picture.present? %>
-  </div>
-
-  <div class="col-md-3">
-    <p><b>タイトル : </b><%= @sinsi.title %></p>
-    <p><b>説明 : </b><%= @sinsi.description %></p>
-    <p>
-      <%= link_to '編集', edit_sinsi_path(@sinsi) %> |
-      <%= link_to '削除', @sinsi, data: { confirm: '本当に消しますか？' }, method: :delete %> |
-      <%= link_to '戻る', sinsis_path %>
-    </p>
+    <h4><b>説明: </b><%= @sinsi.description %></h4>
+    <div class="col-md-3">
+      <p>
+        <%= link_to '編集', edit_sinsi_path(@sinsi) %> |
+        <%= link_to '削除', @sinsi, data: { confirm: '本当に削除しますか？' }, method: :delete %> |
+        <%= link_to '戻る', sinsis_path %>
+      </p>
+    </div>
   </div>
 </div>

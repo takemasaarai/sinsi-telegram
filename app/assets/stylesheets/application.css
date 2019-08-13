@@ -1,15 +1,23 @@
-body { padding-top: 60px; }
+body { padding-top: 80px; }
 footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
-th { border-bottom: 1px solid #DDD; }
+th { border-bottom: 1px solid white; }
+.col-md-4 { margin-top: 70px; }
+.navbar-default .navbar-nav > li > a { margin-top: 10px; }
 
 nav.navbar {
   min-height: 38px;
-  background-color: #f55e55;
+  background-color: #ffbee4;
   background-image: none;
 }
 
-.navbar a.brand { font-size: 18px; }
+.navbar-brand { font-size: 30px; }
+div.navbar-header { padding: 10px 0 }
+.navbar a.brand > img { font-size: 20px; }
+
+.sakura {
+  float: left;
+}
+
 .navbar a.brand:hover {
   color: #fff;
   background-color: transparent;
@@ -17,6 +25,6 @@ nav.navbar {
 }
 
 footer {
-  background-color: #ebebeb;
-  padding: 30px 0;
+  background-color: #f7f7f7;
+  padding: 10px 0;
 }

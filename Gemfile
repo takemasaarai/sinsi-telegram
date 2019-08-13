@@ -50,7 +50,7 @@ gem 'rails_admin'
 # Access ENV
 gem 'dotenv-rails'
 # Japanize gems.
-gem 'rails-i18n', '~> 5.1'
+gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 # Heroku's love call.

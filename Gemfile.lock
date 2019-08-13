@@ -328,7 +328,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 5.2.3)
-  rails-i18n (~> 5.1)
+  rails-i18n
   rails_admin
   ransack
   sass-rails (~> 5.0)

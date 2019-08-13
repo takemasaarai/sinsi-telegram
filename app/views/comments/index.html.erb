@@ -1,9 +1,8 @@
 <h1>コメント一覧</h1>
 
 <% @comments.each do |comment| %>
-  <li><%= comment.body %></li>
-  <li><%= link_to '詳細', comment %></li>
-  <li><%= link_to '削除', comment, method: :delete, data: { confirm: '本当に消しますか？' } %></li>
+  <li><%= comment.body %> | <%= comment.sinsi_id %></li>
+  <li><%= link_to '詳細', comment %> | <%= link_to '削除', comment, method: :delete, data: { confirm: '本当に消しますか？' } %></li>
 <% end %>
 
 <br>

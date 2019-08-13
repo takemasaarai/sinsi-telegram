@@ -28,7 +28,7 @@
 /.vscode
 
 # Ignore local picture.
-/public/uploads
+/public/uploads/sinsi
 
 # Ignore env.
 .env

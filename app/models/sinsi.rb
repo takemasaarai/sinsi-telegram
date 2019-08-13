@@ -1,5 +1,6 @@
 class Sinsi < ApplicationRecord
+  is_impressionable # preview
+  mount_uploader :picture, PictureUploader # upload
 
-  mount_uploader :picture, PictureUploader
   has_many :comments
 end
