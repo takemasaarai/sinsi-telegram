@@ -5,5 +5,4 @@ Rails.application.routes.draw do
   resource :comment, only: [:new, :create, :show, :destroy]
   resources :comments, only: [:index, :show]
   resources :sinsis
-  resources :comments
 end

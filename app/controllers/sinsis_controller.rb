@@ -28,7 +28,7 @@ class SinsisController < ApplicationController
 
     respond_to do |format|
       if @sinsi.save
-        format.html { redirect_to @sinsi, notice: 'Sinsi was successfully created.' }
+        format.html { redirect_to @sinsi, notice: '投稿が完了しました！' }
         format.json { render :show, status: :created, location: @sinsi }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SinsisController < ApplicationController
   def update
     respond_to do |format|
       if @sinsi.update(sinsi_params)
-        format.html { redirect_to @sinsi, notice: 'Sinsi was successfully updated.' }
+        format.html { redirect_to @sinsi, notice: '更新が完了しました！' }
         format.json { render :show, status: :ok, location: @sinsi }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SinsisController < ApplicationController
   def destroy
     @sinsi.destroy
     respond_to do |format|
-      format.html { redirect_to sinsis_url, notice: 'Sinsi was successfully destroyed.' }
+      format.html { redirect_to sinsis_url, notice: '削除が完了しました！' }
       format.json { head :no_content }
     end
   end
