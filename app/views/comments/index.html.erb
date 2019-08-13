@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Comments</h1>
+<h1>コメント一覧</h1>
 
 <% @comments.each do |comment| %>
   <li><%= comment.body %></li>
-  <li><%= link_to 'Show', comment %></li>
-  <li><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <li><%= link_to '詳細', comment %></li>
+  <li><%= link_to '削除', comment, method: :delete, data: { confirm: '本当に消しますか？' } %></li>
 <% end %>
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to '新規コメント', new_comment_path %>
