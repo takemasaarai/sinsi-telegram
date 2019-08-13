@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sinsis
   devise_for :users
-  root 'users#new'
+  root 'sinsis#index'
+  resources :sinsis
 end
