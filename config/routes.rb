@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'pages/dummy'
-  root 'pages#dummy'
+  root 'users#new'
 end
