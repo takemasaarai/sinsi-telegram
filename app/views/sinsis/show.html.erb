@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @sinsi.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sinsi.description %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @sinsi.picture %>
+</p>
+
+<%= link_to 'Edit', edit_sinsi_path(@sinsi) %> |
+<%= link_to 'Back', sinsis_path %>

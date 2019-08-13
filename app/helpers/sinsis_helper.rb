@@ -1,0 +1,2 @@
+module SinsisHelper
+end

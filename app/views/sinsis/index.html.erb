@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sinsis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sinsis.each do |sinsi| %>
+      <tr>
+        <td><%= sinsi.title %></td>
+        <td><%= sinsi.description %></td>
+        <td><%= sinsi.picture %></td>
+        <td><%= link_to 'Show', sinsi %></td>
+        <td><%= link_to 'Edit', edit_sinsi_path(sinsi) %></td>
+        <td><%= link_to 'Destroy', sinsi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sinsi', new_sinsi_path %>

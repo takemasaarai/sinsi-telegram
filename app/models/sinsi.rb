@@ -1,0 +1,2 @@
+class Sinsi < ApplicationRecord
+end
