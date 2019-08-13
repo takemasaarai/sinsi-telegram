@@ -15,5 +15,18 @@
   <%= image_tag(@sinsi.picture_url, width: 600) if @sinsi.picture.present? %>
 </p>
 
+<%
+=begin%>
+ <h3>Comment:</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <p><%= comment.body %></p>
+    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></p>
+  </div>
+<% end %>
+<%= render 'comments/form', comment: @comment %>
+<%
+=end%>
+
 <%= link_to 'Edit', edit_sinsi_path(@sinsi) %> |
 <%= link_to 'Back', sinsis_path %>
