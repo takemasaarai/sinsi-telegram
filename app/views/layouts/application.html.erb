@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 
-    <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle! %>
-    <!-- <%= "今日のあなたの運勢は、#{omikuji[0]}です！" %> -->
 
   <head>
-    <title>Sinsi Telegram | <%= "now page" %></title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle! %>
+    <!-- <%= "今日のあなたの運勢は、#{omikuji[0]}です！" %> -->
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/Zbootstrap-theme.min.css">
@@ -68,12 +69,12 @@
       <%= yield %>
     </div>
 
-    <div id="omikuji"><h3><%= "大吉が出ました！ソースコードを見てみてね！" if omikuji[0] == "大吉" %></h3></div>
 
     <!-- Footer -->
     <footer>
       <div class="container">
         &copy; slicla 2019 - <%= link_to 'Contact', slicla_contact_path %>
+        <div id="omikuji"><h3><%= "大吉が出ました！ソースコードを見てみてね！" if omikuji[0] == "大吉" %></h3></div>
       </div>
     </footer>
 

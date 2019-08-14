@@ -1,5 +1,6 @@
 class SinsisController < ApplicationController
   before_action :set_sinsi, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
   impressionist actions: [:show]
 
   def index
@@ -7,7 +8,7 @@ class SinsisController < ApplicationController
   end
 
   def show
-    @preview = Sinsi.find(params[:id])
+    @preview = Sinsi.find(params[:id]) # No limit
     # impressionist(@preview, nil, unique: [:session_hash])
     @comments = @sinsi.comments.all
     @comment = @sinsi.comments.build

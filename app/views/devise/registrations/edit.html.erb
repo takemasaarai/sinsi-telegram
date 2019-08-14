@@ -1,3 +1,5 @@
+<% provide(:title, "#{current_user.email}'s Page") %>
+
 <h2><%= current_user.email %> さんのアカウント設定</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -5,9 +7,10 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
+  <br />
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -20,23 +23,26 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+  <br />
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <br />
   <div class="field">
     <%= f.label :current_password %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <br />
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "変更する" %>
   </div>
 <% end %>
 
 <h3>アカウントを削除する</h3>
 
-<p>本当ですか？ <%= button_to "Delete", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete %></p>
-
-<%= link_to "戻る", :back %>
+<p>投稿した画像とコメントが全て削除されますが、よろしいですか？</p>
+<br />
+<%= button_to "理解しました", registration_path(resource_name), data: { confirm: "最後の確認です。本当にアカウントを抹消しますか？" }, method: :delete %>

@@ -1,6 +1,11 @@
+<% provide(:title, "Update") %>
+
 <h1>手軽にアップデートしよう！</h1>
 
 <%= render 'form', sinsi: @sinsi %>
+<br />
 
-<%= link_to '戻る', @sinsi %> |
-<%= link_to '削除する', @sinsi, data: { confirm: '本当に削除しますか？' }, method: :delete %>
+<%= button_to "削除する", @sinsi, data: { confirm: "本当に削除しますか？" }, method: :delete %>
+<br />
+
+<%= link_to '戻る', @sinsi %>

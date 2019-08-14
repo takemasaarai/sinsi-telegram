@@ -1,14 +1,33 @@
-<h2><b>タイトル: </b><%= @sinsi.title %></h2>
-<p><b>プレビュー: </b><%= @preview.impressionist_count %> 回</p>
+<% if @sinsi.title.blank? %>
+  <% provide(:title, "無題") %>
+<% else %>
+  <% provide(:title, "#{@sinsi.title}") %>
+<% end %>
+
+<% if @sinsi.title.blank? %>
+  <h1>無題</h1>
+<% else %>
+  <h1><%= @sinsi.title %></h1>
+<% end %>
+
+<p><%= link_to '編集する', edit_sinsi_path(@sinsi) %></p>
+
+<p><b>閲覧数: </b><%= @preview.impressionist_count %> 回</p>
+<p><b>投稿日: </b><%= @sinsi.created_at.to_s.chop.chop.chop.chop.chop %></p>
 <p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop.chop.chop %></p>
 
 <div class="row">
   <div class="col-md-9">
     <%= image_tag(@sinsi.picture_url, width: '100%') if @sinsi.picture.present? %>
-    <h4><b>説明文: </b><%= @sinsi.description %></h4>
+    <% if @sinsi.description.blank? %>
+      <h4><b>「 </b>無言<b> 」</b></h4>
+    <% else %>
+      <h4><b>「 </b><%= @sinsi.description %><b> 」</b></h4>
+    <% end %>
+
+    <br />
     <div class="col-md-3">
       <p>
-        <%= link_to '編集する', edit_sinsi_path(@sinsi) %> |
         <%= link_to '戻る', sinsis_path %>
       </p>
     </div>

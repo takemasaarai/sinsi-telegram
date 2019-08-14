@@ -1,31 +1,36 @@
 <%= form_with(model: sinsi, local: true) do |form| %>
   <% if sinsi.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sinsi.errors.count, "error") %> prohibited this sinsi from being saved:</h2>
-      <ul>
-        <% sinsi.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <div class="alert-danger">
+        <ul class="validate">
+          <% sinsi.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label "タイトル" %>
-    <%= form.text_field :title %>
+    <%= form.label "タイトル (省略可)" %>
+    <%= form.text_field :title, value: @sinsi.title, :placeholder => "無題" %>
   </div>
 
+  <br />
   <div class="field">
-    <%= form.label "説明文" %>
-    <%= form.text_area :description %>
+    <%= form.label "ひとこと (省略可)" %>
+    <%= form.text_field :description, value: @sinsi.description, :placeholder => "無言" %>
   </div>
 
+    <br />
   <div class="field">
     <%= form.label "投稿する画像の選択" %>
     <%= form.file_field :picture %>
   </div>
 
+  <br />
   <div class="actions">
     <%= form.submit data: { confirm: '確定します。よろしいですか？' } %>
   </div>
+
 <% end %>

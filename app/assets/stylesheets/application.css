@@ -33,3 +33,17 @@ footer {
   background-color: #f7f7f7;
   padding: 10px 0;
 }
+
+#thumbnail {
+  /* responsive is difficult ... (>_<); */
+  /* margin-right: 15px;
+  margin-left: 15px; */
+}
+
+.error {
+  font-size: 12px;
+  font-weight: bold;
+  color: tomato;
+}
+
+ul.validate { list-style-position: inside; }

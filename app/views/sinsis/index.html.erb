@@ -1,11 +1,12 @@
+<% provide(:title, "Home") %>
+
 <h1>投稿画像一覧</h1>
 
 <% @sinsis.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |sinsi| %>
       <div class="col-md-4">
-        <h4><b></b><%= link_to sinsi.title, sinsi %> | 投稿日 <%= sinsi.created_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop.chop %></h4>
-        <%= image_tag sinsi.picture_url(:thumb) if sinsi.picture.present? %>
+        <%= link_to image_tag(sinsi.picture_url(:thumb)), sinsi, :id => 'thumbnail' if sinsi.picture.present? %>
       </div>
     <% end %>
   </div>

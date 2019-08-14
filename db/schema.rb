@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_123653) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
+    t.integer "user_id"
     t.integer "sinsi_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_123653) do
     t.string "title"
     t.text "description"
     t.string "picture"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      sinsi: 投稿
+    attributes:
+      user:
+        id: ID
+        email: メールアドレス
+        name: ニックネーム
+        created_at: 作成日
+      sinsi:
+        id: ID
+        title: タイトル
+        description: ひとこと
+        picture: 画像
+        created_at: 投稿日
+        updated_at: 更新日
