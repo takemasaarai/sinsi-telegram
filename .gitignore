@@ -35,3 +35,6 @@
 
 # Ignore Memo.
 memo.md
+
+# Ignore My Shell scripts.
+.bashrc

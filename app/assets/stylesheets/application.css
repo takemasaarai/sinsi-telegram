@@ -1,8 +1,22 @@
 body { padding-top: 80px; }
 footer { margin-top: 100px; }
-th { border-bottom: 1px solid white; }
+
 .col-md-4 { margin-top: 70px; }
+th { border-bottom: 1px solid white; }
+ul.validate { list-style-position: inside; }
+
+h2 { padding-top: 10px; }
+.navbar-brand { font-size: 30px;}
+div.navbar-header { padding: 10px 0 }
+.navbar { font-size: 20px; }
 .navbar-default .navbar-nav > li > a { margin-top: 10px; }
+
+#sakura {
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 0;
+}
 
 nav.navbar {
   min-height: 38px;
@@ -10,23 +24,16 @@ nav.navbar {
   background-image: none;
 }
 
-.navbar-brand { font-size: 30px; }
-div.navbar-header { padding: 10px 0 }
-.navbar a.brand > img { font-size: 20px; }
-
-#sakura {
-  float: left;
-}
-
-#omikuji {
-  text-align: center;
-  background-color: aquamarine;
-}
-
 .navbar a.brand:hover {
   color: #fff;
   background-color: transparent;
   text-decoration: none;
+}
+
+.error {
+  font-size: 12px;
+  font-weight: bold;
+  color: tomato;
 }
 
 footer {
@@ -39,11 +46,3 @@ footer {
   /* margin-right: 15px;
   margin-left: 15px; */
 }
-
-.error {
-  font-size: 12px;
-  font-weight: bold;
-  color: tomato;
-}
-
-ul.validate { list-style-position: inside; }

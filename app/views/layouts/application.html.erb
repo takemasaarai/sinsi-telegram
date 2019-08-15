@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle! %>
-    <!-- <%= "今日のあなたの運勢は、#{omikuji[0]}です！" %> -->
+    <% if user_signed_in? %>
+      <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle! %>
+      <!-- <%= "ID#{current_user.id}番の#{current_user.name}さんの今の運勢は、#{omikuji[0]}です！" %> -->
+    <% end %>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/Zbootstrap-theme.min.css">
@@ -31,8 +32,8 @@
           </button>
 
           <!-- Logo -->
-          <a href='/'><%= image_tag 'sakura.png', :size => '50x50', :id => 'sakura' %></a>
-          <a class="navbar-brand" href="/">Sinsi Telegram</a>
+          <%= link_to image_tag('sakura.png', size: '40x40', id: 'sakura'), root_path %>
+          <a href="/" class="navbar-brand">Sinsi Telegram</a>
         </div>
 
         <!-- User -->
@@ -45,7 +46,7 @@
               <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
               <%= link_to "Log in", new_user_session_path, class: 'navbar-link'  %>
             <% end %>
-          </p>
+          </p><br />
 
           <!-- Menu -->
           <ul class="nav navbar-nav">
@@ -73,8 +74,7 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        &copy; slicla 2019 - <%= link_to 'Contact', slicla_contact_path %>
-        <div id="omikuji"><h3><%= "大吉が出ました！ソースコードを見てみてね！" if omikuji[0] == "大吉" %></h3></div>
+        &copy; slicla 2019 - <%= link_to 'About', about_path  %> - <%= link_to 'Contact', contact_path %>
       </div>
     </footer>
 

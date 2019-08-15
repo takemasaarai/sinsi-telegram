@@ -1,3 +1,2 @@
 module SinsisHelper
-
 end

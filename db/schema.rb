@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_123653) do
+ActiveRecord::Schema.define(version: 2019_08_14_224608) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id"
-    t.integer "sinsi_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,11 +46,11 @@ ActiveRecord::Schema.define(version: 2019_08_13_123653) do
 
   create_table "sinsis", force: :cascade do |t|
     t.string "title"
-    t.text "description"
+    t.text "word"
     t.string "picture"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_123653) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

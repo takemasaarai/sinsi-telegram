@@ -1,17 +1,15 @@
 class SinsisController < ApplicationController
   before_action :set_sinsi, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy]
   impressionist actions: [:show]
 
   def index
-    @sinsis = Sinsi.all
+    @sinsis = Sinsi.all.order(id: "desc") # Downto (new)
+    # @sinsis = Sinsi.all.order(id:) # Upto (old)
   end
 
   def show
     @preview = Sinsi.find(params[:id]) # No limit
-    # impressionist(@preview, nil, unique: [:session_hash])
-    @comments = @sinsi.comments.all
-    @comment = @sinsi.comments.build
   end
 
   def new
@@ -21,8 +19,14 @@ class SinsisController < ApplicationController
   def edit
   end
 
+  def about
+  end
+
+  def contact
+  end
+
   def create
-    @sinsi = Sinsi.new(sinsi_params)
+    @sinsi = Sinsi.new()
 
     respond_to do |format|
       if @sinsi.save
@@ -62,6 +66,13 @@ class SinsisController < ApplicationController
     end
 
     def sinsi_params
-      params.require(:sinsi).permit(:title, :description, :picture)
+      params.require(:sinsi).permit(:title, :word, :picture, :user_id) # Permit params
+    end
+
+    def ensure_correct_user
+      if @current_user.id != params[:id].to_i
+        flash[:notice] = "権限がありません。"
+        redirect_to("/sinsis/index")
+      end
     end
 end

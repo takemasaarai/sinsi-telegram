@@ -1,6 +1,6 @@
-<% provide(:title, "#{current_user.email}'s Page") %>
+<% provide(:title, "#{current_user.name}'s Page") %>
 
-<h2><%= current_user.email %> さんのアカウント設定</h2>
+<h2><%= current_user.name %> さんのアカウント設定</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

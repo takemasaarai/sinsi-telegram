@@ -19,7 +19,7 @@
   <br />
   <div class="field">
     <%= form.label "ひとこと (省略可)" %>
-    <%= form.text_field :description, value: @sinsi.description, :placeholder => "無言" %>
+    <%= form.text_field :word, value: @sinsi.word, :placeholder => "無言" %>
   </div>
 
     <br />
@@ -32,5 +32,4 @@
   <div class="actions">
     <%= form.submit data: { confirm: '確定します。よろしいですか？' } %>
   </div>
-
 <% end %>

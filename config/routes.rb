@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'sinsis#index'
-  get 'slicla/contact'
   resources :sinsis
-  # resource :comment, only: [:new, :create, :show, :destroy]
-  # resources :comments, only: [:index, :show]
+  root 'sinsis#index'
+  get 'about', to: 'sinsis#about'
+  get 'contact', to: 'sinsis#contact'
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 end
