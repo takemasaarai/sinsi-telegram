@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :sinsis
   resources :users
+  resources :sinsis
+  resources :comments
 
   get 'new', to: 'sinsis#new'
   get 'old', to: 'sinsis#old'
   get 'random', to: 'sinsis#random'
 
-  resources :comments
 
   root 'sinsis#index'
 

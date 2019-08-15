@@ -30,19 +30,16 @@
 
 
     <h5>コメント一覧</h5>
-    <%= render 'comments/form', comment: @comment %>
-    <%
-=begin%>
- <% @comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <div>
-        <strong><%= comment_user_name unless comment_user_name.nil? %> さんのコメント</strong>
+        <strong><%= comment.user_name %></strong>
         <br />
         <p><%= comment.body %></p>
-        <p><%= link_to '削除する', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } if comment.user_id == current_user.id %></p>
+        <p><%= link_to '削除する', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></p>
       </div>
     <% end %>
-<%
-=end%>
+    <%= render 'comments/form', comment: @comment %>
+
 
     <br />
     <div class="col-md-3">
