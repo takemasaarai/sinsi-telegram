@@ -89,7 +89,7 @@ class SinsisController < ApplicationController
       @sinsi = Sinsi.find_by(id: params[:id])
       if @sinsi.user_id != current_user.id
         flash[:alert] = "投稿者のみが編集できます"
-        redirect_back(fallback_location: root_path)
+        redirect_back('/index')
       end
     end
 end

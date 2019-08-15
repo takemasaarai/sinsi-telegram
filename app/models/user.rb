@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
   validates :name, presence: true, length: { maximum: 30, message: "は30文字以内に抑えてください" }
+  validates :name, uniqueness: true
 
   has_many :sinsis, dependent: :destroy
   has_many :comments

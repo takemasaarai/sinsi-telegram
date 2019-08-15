@@ -1,6 +1,12 @@
-body { padding-top: 90px; }
+body {
+  background-color: rgba(255, 255, 255, 0.596);
+  padding-top: 90px;
+}
+
 footer { margin-top: 100px; }
 
+div.col-md-9 {
+  background-color: rgb(254, 255, 254);}
 .col-md-4 { margin-top: 60px; }
 th { border-bottom: 1px solid white; }
 ul.validate { list-style-position: inside; }
@@ -35,12 +41,6 @@ footer {
   padding: 10px 0;
 }
 
-#thumbnail {
-  /* responsive is difficult ... (>_<); */
-  /* margin-right: 15px;
-  margin-left: 15px; */
-}
-
 #sakura {
   float: left;
   margin-top: 5px;
@@ -50,4 +50,14 @@ footer {
 
 #post {
   background-color: skyblue;
+}
+
+#bbs {
+  background-color: rgba(248, 245, 245, 0.527);
+  border: outset 1px;
+  border-color: rgb(255, 255, 255);
+  padding-top: 3px;
+  padding-bottom: 2px;
+  padding-left: 9px;
+  font-size: 16px;
 }
