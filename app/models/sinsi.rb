@@ -4,7 +4,8 @@ class Sinsi < ApplicationRecord
   validates :title, length: { maximum: 30, message: "は30文字以内に抑えてください" }
   validates :word, length: { maximum: 30, message: "は30文字以内に抑えてください" }
   validates :picture, presence: true
-  validate :picture_size # except message is attachment
+  validate :picture_size
+
   belongs_to :user
 
   def user

@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :sinsis
-  root 'sinsis#index'
 
   post "likes/:sinsi_id/create" => "likes#create"
+
+  root 'sinsis#index'
 
   get 'about', to: 'sinsis#about'
   get 'contact', to: 'sinsis#contact'

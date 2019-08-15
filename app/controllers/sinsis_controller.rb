@@ -1,13 +1,15 @@
 class SinsisController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy, :update]
-  impressionist actions: [:show]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  impressionist unique: [:session_hash]
 
   def index
     @sinsis = Sinsi.all.order(id: "desc")
   end
 
   def show
-    @preview = Sinsi.find(params[:id]) # No limit
+    @preview = Sinsi.find(params[:id])
+    impressionist(@preview, nil, unique: [:session_hash])
     @sinsi = Sinsi.find_by(id: params[:id])
   end
 
@@ -71,7 +73,7 @@ class SinsisController < ApplicationController
     def ensure_correct_user
       @sinsi = Sinsi.find_by(id: params[:id])
       if @sinsi.user_id != current_user.id
-        flash[:notice] = "投稿者のみが編集できます"
+        flash[:alert] = "投稿者のみが編集できます"
         redirect_back(fallback_location: root_path)
       end
     end
