@@ -4,18 +4,32 @@
   <% provide(:title, "#{@sinsi.title}") %>
 <% end %>
 
+
 <% if @sinsi.title.blank? %>
-  <h2>無題</h2>
+  <h2>無題
 <% else %>
-  <h2><%= @sinsi.title %></h2>
+  <h2><%= @sinsi.title %>
 <% end %>
 
-<p><button>いいね！</button></p>
+<% if @sinsi.user_id == current_user.id %>
+  <span style="font-size: 13px"><%= link_to '編集する', edit_sinsi_path(@sinsi.id) %>
+<br />
+<% end %></h2><br />
 
-<p><%= link_to '編集する', edit_sinsi_path(@sinsi) %></p>
+<% if Like.find_by(user_id: current_user.id,sinsi_id: @sinsi.id) %>
+  <%= link_to("likes/#{@sinsi.id}/destroy",{method:"post"}) do %>
+    <button>いいね！しました</button>
+  <% end %>
+<% else %>
+  <%= link_to("likes/#{@sinsi.id}/create",{method:"post"}) do %>
+    <button>いいね！してません</button>
+  <% end %>
+<% end %>
+
+<p><%= @likes_count = Like.where(sinsi_id: @sinsi.id).count %><b>回いいね！されました</b></p>
 <p><b>閲覧数: </b><%= @preview.impressionist_count %> 回</p>
 <p><b>投稿者: </b><%= "#{@sinsi.user_id}" %></p>
-<p><b>投稿日: </b><%= @sinsi.created_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
+<p><b>閲覧者: </b><%= "#{current_user.id}" %></p>
 <p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
 
 <div class="row">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_224608) do
+ActiveRecord::Schema.define(version: 2019_08_15_054956) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2019_08_14_224608) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sinsi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sinsis", force: :cascade do |t|

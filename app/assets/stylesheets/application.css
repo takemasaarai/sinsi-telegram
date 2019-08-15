@@ -11,12 +11,6 @@ div.navbar-header { padding: 10px 0 }
 .navbar { font-size: 15px; }
 .navbar-default .navbar-nav > li > a { margin-top: 10px; }
 
-#sakura {
-  float: left;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 0;
-}
 
 nav.navbar {
   min-height: 38px;
@@ -45,4 +39,15 @@ footer {
   /* responsive is difficult ... (>_<); */
   /* margin-right: 15px;
   margin-left: 15px; */
+}
+
+#sakura {
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 0;
+}
+
+#post {
+  background-color: skyblue;
 }

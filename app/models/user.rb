@@ -7,4 +7,7 @@ class User < ApplicationRecord
 
   has_many :sinsis, dependent: :destroy
 
+  def sinsis
+    return Sinsi.where(user_id: self.id)
+  end
 end

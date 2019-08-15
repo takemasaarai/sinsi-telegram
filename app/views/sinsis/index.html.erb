@@ -6,6 +6,7 @@
   <div class="row">
     <% group.compact.each do |sinsi| %>
       <div class="col-md-4">
+        <p id="post"><b>投稿日: </b><%= sinsi.created_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
         <%= link_to image_tag(sinsi.picture_url(:thumb)), sinsi, id: 'thumbnail' if sinsi.picture.present? %>
       </div>
     <% end %>

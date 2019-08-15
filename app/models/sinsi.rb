@@ -7,6 +7,10 @@ class Sinsi < ApplicationRecord
   validate :picture_size # except message is attachment
   belongs_to :user
 
+  def user
+    return User.find_by(id: self.user_id)
+  end
+
   def picture_size
     if picture.size > 3.megabytes
       errors.add(:picture, "のサイズは3MBまでにしてください")

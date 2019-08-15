@@ -1,19 +1,14 @@
 class SinsisController < ApplicationController
-  before_action :set_sinsi, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy, :update]
   impressionist actions: [:show]
 
-  def user
-    return User.find_by(id: self.user_id)
-  end
-
   def index
-    @sinsis = Sinsi.all.order(id: "desc") # Downto (new)
-    # @sinsis = Sinsi.all.order(id:) # Upto (old)
+    @sinsis = Sinsi.all.order(id: "desc")
   end
 
   def show
     @preview = Sinsi.find(params[:id]) # No limit
+    @sinsi = Sinsi.find_by(id: params[:id])
   end
 
   def new
@@ -71,5 +66,13 @@ class SinsisController < ApplicationController
 
     def sinsi_params
       params.require(:sinsi).permit(:title, :word, :picture, :user_id) # Permit params
+    end
+
+    def ensure_correct_user
+      @sinsi = Sinsi.find_by(id: params[:id])
+      if @sinsi.user_id != current_user.id
+        flash[:notice] = "投稿者のみが編集できます"
+        redirect_back(fallback_location: root_path)
+      end
     end
 end
