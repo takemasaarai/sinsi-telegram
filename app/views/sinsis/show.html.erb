@@ -14,7 +14,7 @@
 
 <p><%= link_to '編集する', edit_sinsi_path(@sinsi) %></p>
 <p><b>閲覧数: </b><%= @preview.impressionist_count %> 回</p>
-<p><b>投稿者: </b><%= current_user.name %></p>
+<p><b>投稿者: </b><%= "#{@sinsi.user_id}" %></p>
 <p><b>投稿日: </b><%= @sinsi.created_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
 <p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
 

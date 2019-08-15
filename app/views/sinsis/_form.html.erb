@@ -28,6 +28,8 @@
     <%= form.file_field :picture %>
   </div>
 
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
   <br />
   <div class="actions">
     <%= form.submit data: { confirm: '確定します。よろしいですか？' } %>

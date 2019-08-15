@@ -1,14 +1,14 @@
-body { padding-top: 80px; }
+body { padding-top: 90px; }
 footer { margin-top: 100px; }
 
-.col-md-4 { margin-top: 70px; }
+.col-md-4 { margin-top: 60px; }
 th { border-bottom: 1px solid white; }
 ul.validate { list-style-position: inside; }
 
 h2 { padding-top: 10px; }
-.navbar-brand { font-size: 30px;}
+.navbar-brand { font-size: 25px;}
 div.navbar-header { padding: 10px 0 }
-.navbar { font-size: 20px; }
+.navbar { font-size: 15px; }
 .navbar-default .navbar-nav > li > a { margin-top: 10px; }
 
 #sakura {

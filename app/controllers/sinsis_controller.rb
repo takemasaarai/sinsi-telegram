@@ -1,7 +1,11 @@
 class SinsisController < ApplicationController
   before_action :set_sinsi, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy, :update]
   impressionist actions: [:show]
+
+  def user
+    return User.find_by(id: self.user_id)
+  end
 
   def index
     @sinsis = Sinsi.all.order(id: "desc") # Downto (new)
@@ -26,7 +30,7 @@ class SinsisController < ApplicationController
   end
 
   def create
-    @sinsi = Sinsi.new()
+    @sinsi = Sinsi.new(sinsi_params)
 
     respond_to do |format|
       if @sinsi.save
@@ -67,12 +71,5 @@ class SinsisController < ApplicationController
 
     def sinsi_params
       params.require(:sinsi).permit(:title, :word, :picture, :user_id) # Permit params
-    end
-
-    def ensure_correct_user
-      if @current_user.id != params[:id].to_i
-        flash[:notice] = "権限がありません。"
-        redirect_to("/sinsis/index")
-      end
     end
 end
