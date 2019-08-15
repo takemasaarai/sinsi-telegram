@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30, message: "は30文字以内に抑えてください" }
 
   has_many :sinsis, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def sinsis
     return Sinsi.where(user_id: self.id)

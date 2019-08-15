@@ -7,10 +7,7 @@ class Sinsi < ApplicationRecord
   validate :picture_size
 
   belongs_to :user
-
-  def user
-    return User.find_by(id: self.user_id)
-  end
+  has_many :likes
 
   def picture_size
     if picture.size > 3.megabytes

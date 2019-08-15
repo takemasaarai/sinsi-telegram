@@ -15,18 +15,7 @@
   <span style="font-size: 13px"><%= link_to '編集する', edit_sinsi_path(@sinsi) %><br />
 <% end %></h2><br />
 
-<%
-=begin%>
- <% if Like.find_by(user_id: current_user.id,sinsi_id: @sinsi.id) %>
-  <%= link_to 'いいね！しない', @sinsi.id, method: :delete %>
-<% else %>
-  <%= link_to 'いいね！する', @sinsi.id, method: :put %>
-<% end %>
-<%
-=end%>
-
-<p><%= @likes_count = Like.where(sinsi_id: @sinsi.id).count %><b>回いいね！されました</b></p>
-<p><b>投稿者: </b><%= "#{@sinsi.user_id}" %></p>
+<p><b>投稿者: </b><%= "#{ user_name }" %> さん</p>
 <p><b>閲覧者数: </b><%= @preview.impressionist_count %> 回</p>
 <p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
 
