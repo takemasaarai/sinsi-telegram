@@ -28,17 +28,33 @@
       <h4><b>「 </b><%= @sinsi.word %><b> 」</b></h4>
     <% end %>
 
-
+  <br />
     <h5>コメント一覧</h5>
     <% @comments.each do |comment| %>
       <div>
-        <strong><%= comment.user_name %></strong>
         <br />
+        <% unless comment.user.nil? %>
+        <p><%= comment.user.name %>さん<%= "(投稿者)" if comment.user.name == user_name %></p>
         <p><%= comment.body %></p>
-        <p><%= link_to '削除する', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></p>
-      </div>
+        <% if comment.user.name == current_user.name %>
+          <%= link_to "削除する", comment_path(comment.id), method: :delete %>
+        <% end %>
+
+        <% else %>
+          <p><b>ユーザーが削除されました</b></p>
+        <% end %>
+      </div><br />
     <% end %>
-    <%= render 'comments/form', comment: @comment %>
+
+    <%= form_for @comment do |f| %>
+      <%= f.text_field :body %>
+
+  <%= f.hidden_field :sinsi_id, value: @sinsi.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <br />
+      <br /><%= f.submit 'コメントする' %>
+    <% end %>
 
 
     <br />

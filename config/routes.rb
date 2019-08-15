@@ -10,13 +10,12 @@ Rails.application.routes.draw do
   get 'old', to: 'sinsis#old'
   get 'random', to: 'sinsis#random'
 
-
-  root 'sinsis#index'
-
   get 'about', to: 'sinsis#about'
   get 'contact', to: 'sinsis#contact'
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+  root 'sinsis#index'
 end

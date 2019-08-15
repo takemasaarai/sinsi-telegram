@@ -7,12 +7,12 @@ ja:
       user:
         id: ID
         email: メールアドレス
-        name: ニックネーム
+        name: ユーザーネーム
         created_at: 作成日
       sinsi:
         id: ID
         title: タイトル
-        description: ひとこと
+        word: ひとこと
         picture: 画像
         created_at: 投稿日
         updated_at: 更新日

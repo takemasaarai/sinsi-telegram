@@ -1,12 +1,12 @@
 class SinsisController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy, :update]
-  before_action :set_sinsi, only: [:show]
 
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   impressionist unique: [:session_hash]
 
   def index
     @sinsis = Sinsi.all.order(id: "desc")
+    @sinsi = Sinsi.new
   end
 
   def old
@@ -20,11 +20,12 @@ class SinsisController < ApplicationController
   end
 
   def show
+    @sinsi = Sinsi.find(params[:id])
+    @comments = @sinsi.comments
+    @comment = Comment.new
     @preview = Sinsi.find(params[:id])
     impressionist(@preview, nil, unique: [:session_hash])
     @sinsi = Sinsi.find_by(id: params[:id])
-    @comments = @sinsi.comments.all
-    @comment = @sinsi.comments.build
   end
 
   def new
