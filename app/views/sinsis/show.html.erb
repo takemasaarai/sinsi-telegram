@@ -28,6 +28,22 @@
       <h4><b>「 </b><%= @sinsi.word %><b> 」</b></h4>
     <% end %>
 
+
+    <h5>コメント一覧</h5>
+    <%= render 'comments/form', comment: @comment %>
+    <%
+=begin%>
+ <% @comments.each do |comment| %>
+      <div>
+        <strong><%= comment_user_name unless comment_user_name.nil? %> さんのコメント</strong>
+        <br />
+        <p><%= comment.body %></p>
+        <p><%= link_to '削除する', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } if comment.user_id == current_user.id %></p>
+      </div>
+    <% end %>
+<%
+=end%>
+
     <br />
     <div class="col-md-3">
       <p>

@@ -1,13 +1,14 @@
-<h1>コメント詳細</h1>
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>本文 : </strong>
+  <strong>Body:</strong>
   <%= @comment.body %>
 </p>
 
 <p>
-  <strong>投稿 : </strong>
+  <strong>Sinsi:</strong>
   <%= @comment.sinsi_id %>
 </p>
 
-<%= link_to '戻る', comments_path %>
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

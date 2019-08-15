@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'old', to: 'sinsis#old'
   get 'random', to: 'sinsis#random'
 
+  resources :comments
+
   root 'sinsis#index'
 
   get 'about', to: 'sinsis#about'

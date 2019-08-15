@@ -5,7 +5,6 @@ class SinsisController < ApplicationController
 
   def index
     @sinsis = Sinsi.all.order(id: "desc")
-
   end
 
   def old
@@ -21,7 +20,6 @@ class SinsisController < ApplicationController
   def show
     @preview = Sinsi.find(params[:id])
     impressionist(@preview, nil, unique: [:session_hash])
-    @like = Like.new
     @sinsi = Sinsi.find_by(id: params[:id])
   end
 
