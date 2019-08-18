@@ -1,17 +1,17 @@
 <% provide(:title, "Log in") %>
 
-<h2>あなたも手軽な画像投稿を体験しましょう！</h2>
+<h2>あなたも手軽に画像電報を挿入しましょう！</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email  %><br />
   </div>
 
-  <br />
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password %><br />
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -19,9 +19,8 @@
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end %>
-
-  <br />
+  <% end %><br />
+  
   <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
