@@ -1,44 +1,19 @@
-body {
-  background-color: rgba(255, 255, 255, 0.596);
-  padding-top: 90px;
-}
+/* Header */
 
-footer { margin-top: 100px; }
-
-div.col-md-9 {
-  background-color: rgb(254, 255, 254);}
-.col-md-4 { margin-top: 60px; }
-th { border-bottom: 1px solid white; }
-ul.validate { list-style-position: inside; }
-
-h2 { padding-top: 10px; }
-.navbar-brand { font-size: 25px;}
-div.navbar-header { padding: 10px 0 }
-.navbar { font-size: 15px; }
-.navbar-default .navbar-nav > li > a { margin-top: 10px; }
-
-
-nav.navbar {
+.navbar {
+  font-size: 15px;
   min-height: 38px;
   background-color: #ffbee4;
-  background-image: none;
 }
 
-.navbar a.brand:hover {
+.navbar-brand { font-size: 25px; }
+.navbar-header { padding: 10px 0; }
+.navbar-default .navbar-nav > li > a { margin-top: 10px; }
+
+.navbar .brand:hover {
   color: #fff;
   background-color: transparent;
   text-decoration: none;
-}
-
-.error {
-  font-size: 12px;
-  font-weight: bold;
-  color: tomato;
-}
-
-footer {
-  background-color: #f7f7f7;
-  padding: 10px 0;
 }
 
 #sakura {
@@ -48,9 +23,36 @@ footer {
   margin-right: 0;
 }
 
-#post {
-  background-color: skyblue;
+/* Body */
+
+body {
+  background-color: rgba(255, 255, 255, 0.596);
+  padding-top: 90px;
 }
+
+h2 { padding-top: 10px; }
+
+ul.validate {
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+  color: brown;
+}
+
+/* Sinsis */
+
+.col-md-4 { margin-top: 60px; }
+
+#post {
+  color: black;
+  position: absolute;
+  margin-bottom: 10px;
+  background-color: #ffbee4d7;
+}
+
+/* Comments */
+
+div.col-md-9 { background-color: rgb(254, 255, 254); }
 
 #bbs {
   background-color: rgba(248, 245, 245, 0.527);
@@ -60,4 +62,12 @@ footer {
   padding-bottom: 2px;
   padding-left: 9px;
   font-size: 16px;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 100px;
+  background-color: #f7f7f7;
+  padding: 10px 0;
 }

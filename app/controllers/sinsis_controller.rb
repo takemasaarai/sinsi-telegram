@@ -46,7 +46,7 @@ class SinsisController < ApplicationController
 
     respond_to do |format|
       if @sinsi.save
-        format.html { redirect_to @sinsi, notice: '投稿が完了しました！' }
+        format.html { redirect_to @sinsi, notice: '挿入が完了しました！' }
         format.json { render :show, status: :created, location: @sinsi }
       else
         format.html { render :new }
@@ -82,7 +82,7 @@ class SinsisController < ApplicationController
     end
 
     def sinsi_params
-      params.require(:sinsi).permit(:title, :word, :picture, :user_id) # Permit params
+      params.require(:sinsi).permit(:title, :word, :picture, :user_id)
     end
 
     def ensure_correct_user

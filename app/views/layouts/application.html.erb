@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <% if user_signed_in? %>
-      <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle! %>
+      <% omikuji = %W(大吉 吉 中吉 小吉 半吉 末吉 末小吉 平 凶 小凶 半凶 末凶 大凶).shuffle %>
       <!-- <%= "ID#{current_user.id}番の#{current_user.name}さんの今の運勢は、#{omikuji[0]}です！" %> -->
     <% end %>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/Zbootstrap-theme.min.css">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
     <!-- Header -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -32,8 +30,8 @@
           </button>
 
           <!-- Logo -->
-          <%= link_to image_tag('sakura.png', size: '40x40', id: 'sakura'), root_path %>
-          <a href="/" class="navbar-brand">Sinsi Telegram</a>
+          <%= link_to image_tag('logo.png', size: '40x40', id: 'sakura'), root_path %>
+          <%= link_to 'Sinsi Telegram', root_path, class: 'navbar-brand' %>
         </div>
 
         <!-- User -->
@@ -53,7 +51,7 @@
             <li ><%= link_to 'Insert', new_sinsi_path %></li>
             <li ><%= link_to 'New', root_path %></li>
             <li ><%= link_to 'Old', old_path %></li>
-            <li ><%= link_to 'Shuffle', random_path %></li>
+            <li ><%= link_to 'Random', random_path %></li>
           </ul>
         </div>
       </div>
@@ -63,8 +61,7 @@
     <div class="container">
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
+      <% elsif alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
@@ -72,11 +69,10 @@
       <%= yield %>
     </div>
 
-
     <!-- Footer -->
     <footer>
       <div class="container">
-        &copy; slicla 2019 - <%= link_to 'About', about_path  %> - <%= link_to 'Contact', contact_path %>
+        &copy; slicla 2019 - <%= link_to 'About', about_path %> - <%= link_to 'Contact', contact_path %>
       </div>
     </footer>
 

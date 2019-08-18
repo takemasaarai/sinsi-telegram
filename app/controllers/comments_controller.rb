@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :destroy]
   before_action :ensure_correct_comment_user, only: [:destroy]
 
   # GET /comments
@@ -10,8 +10,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   # GET /comments/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /comments/new
   # def new
@@ -30,10 +30,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to sinsi_path(@comment.sinsi_id), notice: 'コメントを書き込みました！' }
-        format.json { render :show, status: :created, location: @comment }
+        format.json { render :show, status: :created, location: @sinsi }
       else
-        format.html { redirect_to sinsi_path(@comment.sinsi_id), alert: 'コメントを書き込めませんでした(１～30文字が限界です)' }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { render :show }
+        format.json { render json: @comment.errors, status: :unprocessable_entity  }
       end
     end
   end
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   # def update
   #   respond_to do |format|
   #     if @comment.update(comment_params)
-  #       format.html { redirect_to sinsi_path, notice: 'コメントを書き込みました！' }
+  #       format.html { redirect_to sinsi_path, notice: 'コメントを更新しました！' }
   #       format.json { render :show, status: :ok, location: @comment }
   #     else
   #       format.html { render :edit }
@@ -63,12 +63,11 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:body, :sinsi_id, :user_id)
     end
@@ -77,7 +76,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find_by(id: params[:id])
       if @comment.user_id != current_user.id
         flash[:alert] = "投稿者のみが削除できます"
-        redirect_back(fallback_location: root_path)
+        redirect_back('/index')
       end
     end
 end
