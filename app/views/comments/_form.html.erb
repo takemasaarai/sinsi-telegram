@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_field :body %><br /><br />
-  </div>
+    <%= form.text_field :body %>
+  </div><br />
 
   <%= form.hidden_field :sinsi_id, value: @sinsi.id %>
   <%= form.hidden_field :user_id, value: current_user.id %>

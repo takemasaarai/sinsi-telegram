@@ -22,12 +22,12 @@
   <div class="col-md-9">
     <%= image_tag(@sinsi.picture_url, width: '100%') if @sinsi.picture.present? %>
     <% if @sinsi.word.blank? %>
-      <h4><b>「 </b>無言<b> 」</b></h4>
+      <h3><b>「 </b>無言<b> 」</b></h3>
     <% else %>
-      <h4><b>「 </b><%= @sinsi.word %><b> 」</b></h4>
+      <h3><b>「 </b><%= @sinsi.word %><b> 」</b></h3>
     <% end %><br />
 
-    <h5>コメント一覧</h5>
+    <h4>コメント一覧</h4>
     <br />
     <% i = 0 %>
     <% @comments.each do |comment| %>
@@ -40,11 +40,12 @@
           <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
         <% end %>
       <% end %>
-      </div><br /><br />
+      </div>
     <% end %>
 
     <%= render 'comments/form', comment: @comment %>
 
-    <div class="col-md-3"><p><%= link_to '戻る', sinsis_path %></p></div>
+    <br />
+    <p><%= link_to '戻る', sinsis_path %></p>
   </div>
 </div>

@@ -1,48 +1,47 @@
 <% provide(:title, "#{current_user.name}'s Page") %>
 
-<h2><%= current_user.name %> さんのアカウント設定</h2>
+<h2>アカウント設定</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <br />
   <div class="field">
-    <%= f.label :name %>(変更不可)<br />
-    <%= current_user.name %><br />
-  </div>
+    <%= f.label :name %><em> (変更不可)</em><br />
+    <%= current_user.name %>
+  </div><br />
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email %><br />
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <%= f.email_field :email %>
+  </div><br />
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 文字以上に設定して下さい)</em>
+      <em>(<%= @minimum_password_length %>文字以上に設定して下さい)</em>
     <% end %><br />
-    <%= f.password_field :password %><br />
-  </div>
+    <%= f.password_field :password %>
+  </div><br />
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %><br />
-  </div>
+    <%= f.password_field :password_confirmation %>
+  </div><br />
 
   <div class="field">
     <%= f.label :current_password %><br />
-    <%= f.password_field :current_password %><br /><br />
-  </div>
+    <%= f.password_field :current_password %>
+  </div><br />
 
   <div class="actions">
     <%= f.submit "変更する" %>
   </div>
 <% end %>
 
+<br />
 <h3>アカウントを削除する</h3>
 
-<p>投稿した画像とコメントが全て削除されますが、よろしいですか？</p><br />
+<br />
+<p><b>投稿した画像とコメントが全て削除されますが、よろしいですか？</p></b>
 <%= button_to "理解しました", registration_path(resource_name), data: { confirm: "最後の確認です。本当にアカウントを抹消しますか？" }, method: :delete %>
