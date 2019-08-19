@@ -29,15 +29,13 @@
 /.vscode
 
 # Ignore local picture.
-/public/uploads/sinsi
-/public/uploads/tmp
+/public/uploads/
 
-
-# Ignore env.
+# Ignore env file.
 .env
 
-# Ignore Memo.
+# Ignore memo.
 memo.md
 
-# Ignore My Shell scripts.
-.bashrc
+# Ignore shell scripts.
+/.sh

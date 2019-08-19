@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 # Upload to AWS S3.
 gem 'fog-aws'
+gem "aws-sdk-s3", require: false
 # Accout registration.
 gem 'devise'
 # Preview count.
@@ -53,8 +54,6 @@ gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-# Heroku's love call.
-gem "aws-sdk-s3", require: false
 
 
 group :development, :test do
