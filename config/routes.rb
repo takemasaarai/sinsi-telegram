@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users
-
   resources :users
-  resources :sinsis
-  resources :comments
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  resources :sinsis do
+    resources :comments, only: [:index, :create, :destroy]
+  end
 
   get 'new', to: 'sinsis#new'
   get 'old', to: 'sinsis#old'
@@ -12,10 +17,6 @@ Rails.application.routes.draw do
 
   get 'about', to: 'sinsis#about'
   get 'contact', to: 'sinsis#contact'
-
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
 
   root 'sinsis#index'
 end

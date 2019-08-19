@@ -4,7 +4,6 @@
   <% provide(:title, "#{@sinsi.title}") %>
 <% end %>
 
-
 <% if @sinsi.title.blank? %>
   <h2>無題
 <% else %>
@@ -15,8 +14,8 @@
   <span style="font-size: 13px"><%= link_to '編集する', edit_sinsi_path(@sinsi) %><br />
 <% end %></h2><br />
 
-<p><b>投稿者: </b><%= "#{ user_name }" %> さん</p>
-<p><b>閲覧者数: </b><%= @preview.impressionist_count %> 人</p>
+<p><b>投稿ユーザー名: </b><%= "#{user_name}" %> さん</p>
+<p><b>閲覧ユーザー数: </b><%= @preview.impressionist_count %> 人</p>
 <p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
 
 <div class="row">
@@ -26,33 +25,26 @@
       <h4><b>「 </b>無言<b> 」</b></h4>
     <% else %>
       <h4><b>「 </b><%= @sinsi.word %><b> 」</b></h4>
-    <% end %>
+    <% end %><br />
 
-  <br />
     <h5>コメント一覧</h5>
-        <br />
-        <% i = 0 %>
+    <br />
+    <% i = 0 %>
     <% @comments.each do |comment| %>
       <div id="bbs">
-        <% unless comment.user.nil? %>
+      <% unless comment.user.nil? %>
         <p><%= "#{i+=1} " %>
         <span style="color: green;"><%= comment.user.name %>さん</span><%= " (投稿者)" if comment.user.name == user_name %><%= " #{comment.created_at.to_s.chop.chop.chop.chop.chop}" %></p>
         <p><%= comment.body %></p>
         <% if comment.user.name == current_user.name %>
           <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
         <% end %>
-        <% end %>
-      </div><br />
+      <% end %>
+      </div><br /><br />
     <% end %>
 
-<%= render 'comments/form', comment: @comment %>
+    <%= render 'comments/form', comment: @comment %>
 
-
-    <br />
-    <div class="col-md-3">
-      <p>
-        <%= link_to '戻る', sinsis_path %>
-      </p>
-    </div>
+    <div class="col-md-3"><p><%= link_to '戻る', sinsis_path %></p></div>
   </div>
 </div>

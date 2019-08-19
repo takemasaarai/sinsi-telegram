@@ -1,5 +1,5 @@
 class SinsisController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_sinsi, only: [:edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   impressionist unique: [:session_hash]

@@ -3,8 +3,8 @@
 <h2>手軽にアップデートしよう！</h2>
 
 <%= render 'form', sinsi: @sinsi %>
-<br />
 
+<br />
 <%= button_to '削除する', sinsi_path(@sinsi.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-  <br />
+<br />
 <%= link_to '戻る', @sinsi %>
