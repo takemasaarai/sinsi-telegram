@@ -1,12 +1,11 @@
 class SinsisController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :destroy, :update]
-
+  before_action :authenticate_user!, only: [:create, :edit, :destroy, :update]
+  before_action :set_sinsi only[:edit]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   impressionist unique: [:session_hash]
 
   def index
     @sinsis = Sinsi.all.order(id: "desc")
-    @sinsi = Sinsi.new
   end
 
   def old
@@ -20,12 +19,10 @@ class SinsisController < ApplicationController
   end
 
   def show
-    @sinsi = Sinsi.find(params[:id])
+    @sinsi = Sinsi.find_by(id: params[:id])
     @comments = @sinsi.comments
-    @comment = Comment.new
     @preview = Sinsi.find(params[:id])
     impressionist(@preview, nil, unique: [:session_hash])
-    @sinsi = Sinsi.find_by(id: params[:id])
   end
 
   def new
@@ -42,7 +39,7 @@ class SinsisController < ApplicationController
   end
 
   def create
-    @sinsi = Sinsi.new(sinsi_params)
+    @sinsi = Sinsi.new(sinsi_params, user_id: current_user[:id])
 
     respond_to do |format|
       if @sinsi.save
@@ -82,14 +79,14 @@ class SinsisController < ApplicationController
     end
 
     def sinsi_params
-      params.require(:sinsi).permit(:title, :word, :picture, :user_id)
+      params.require(:sinsi).permit(:title, :word, :picture)
     end
 
     def ensure_correct_user
       @sinsi = Sinsi.find_by(id: params[:id])
       if @sinsi.user_id != current_user.id
-        flash[:alert] = "投稿者のみが編集できます"
-        redirect_back('/index')
+        flash[:alert] = "挿入者のみが編集できます"
+        redirect_back(fallback_location: root_path)
       end
     end
 end

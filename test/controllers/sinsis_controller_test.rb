@@ -17,7 +17,7 @@ class SinsisControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sinsi" do
     assert_difference('Sinsi.count') do
-      post sinsis_url, params: { sinsi: { description: @sinsi.description, picture: @sinsi.picture, title: @sinsi.title } }
+      post sinsis_url, params: { sinsi: { word: @sinsi.word, picture: @sinsi.picture, title: @sinsi.title } }
     end
 
     assert_redirected_to sinsi_url(Sinsi.last)
@@ -34,7 +34,7 @@ class SinsisControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sinsi" do
-    patch sinsi_url(@sinsi), params: { sinsi: { description: @sinsi.description, picture: @sinsi.picture, title: @sinsi.title } }
+    patch sinsi_url(@sinsi), params: { sinsi: { word: @sinsi.word, picture: @sinsi.picture, title: @sinsi.title } }
     assert_redirected_to sinsi_url(@sinsi)
   end
 

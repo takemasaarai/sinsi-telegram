@@ -2,7 +2,7 @@ class Sinsi < ApplicationRecord
   is_impressionable # preview
   mount_uploader :picture, PictureUploader # upload
   validates :title, length: { maximum: 30, message: "は30文字以内に抑えてください" }
-  validates :word, length: { maximum: 30, message: "は30文字以内に抑えてください" }
+  validates :word, length: { maximum: 50, message: "は50文字以内に抑えてください" }
   validates :picture, presence: true
   validate :picture_size
 
