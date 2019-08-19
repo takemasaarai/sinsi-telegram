@@ -1,6 +1,6 @@
 class SinsisController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :destroy, :update]
-  before_action :set_sinsi only[:edit]
+  before_action :authenticate_user!, only: [:edit, :create, :update, :destroy]
+  before_action :set_sinsi, only: [:edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   impressionist unique: [:session_hash]
 
@@ -39,7 +39,7 @@ class SinsisController < ApplicationController
   end
 
   def create
-    @sinsi = Sinsi.new(sinsi_params, user_id: current_user[:id])
+    @sinsi = Sinsi.new(sinsi_params)
 
     respond_to do |format|
       if @sinsi.save
@@ -79,7 +79,7 @@ class SinsisController < ApplicationController
     end
 
     def sinsi_params
-      params.require(:sinsi).permit(:title, :word, :picture)
+      params.require(:sinsi).permit(:title, :word, :picture, :user_id)
     end
 
     def ensure_correct_user

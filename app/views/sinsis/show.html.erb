@@ -45,15 +45,7 @@
       </div><br />
     <% end %>
 
-    <%= form_for @comment do |f| %>
-      <%= f.text_field :body %>
-
-  <%= f.hidden_field :sinsi_id, value: @sinsi.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-
-      <br />
-      <br /><%= f.submit 'コメントする' %>
-    <% end %>
+<%= render 'comments/form', comment: @comment %>
 
 
     <br />

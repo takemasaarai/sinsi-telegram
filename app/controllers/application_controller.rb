@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception # CSRF escape
-  before_action :authenticate_user! # devise helper
+  protect_from_forgery with: :exception # CSRF
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
