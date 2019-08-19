@@ -34,18 +34,25 @@
       <% i = 0 %>
       <%= "最初のコメントを投稿しませんか？" if @comments.empty? %>
       <% @comments.each do |comment| %>
-        <% if comment.user.nil? %>
-          <p><%= "#{i+=1} " %>
-          <span style="color: green;"><%= comment.user.name %>さん</span><%= " (投稿者)" if comment.user.name == user_name %><%= " #{comment.created_at.to_s.chop.chop.chop.chop.chop}" %></p>
-          <p><%= comment.body %></p>
-          <% if comment.user.name == current_user.name %>
-            <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
-          <% end %>
+        <p><%= "#{i+=1} " %>
+        <span style="color: green;"><%= comment.user.name %>さん</span><%= " (投稿者)" if comment.user.name == user_name %><%= " #{comment.created_at.to_s.chop.chop.chop.chop.chop}" %></p>
+        <p><%= comment.body %></p>
+        <% if comment.user.name == current_user.name %>
+          <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
         <% end %>
       <% end %>
     </div><br />
 
-    <%= render 'comments/form', comment: @comment %>
+    <%= form_for(@comment, local: true) do |form| %>
+      <div class="field">
+        <%= form.text_field :body %>
+      </div><br />
+
+      <%= form.hidden_field :sinsi_id, value: @sinsi.id %>
+      <%= form.hidden_field :user_id, value: current_user.id if user_signed_in? %>
+
+      <%= form.submit 'コメントする', data: { confirm: '確定します。よろしいですか？' } %>
+    <% end %>
 
     <br />
     <p><%= link_to '戻る', sinsis_path %></p>

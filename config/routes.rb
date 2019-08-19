@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :sinsis do
-    resources :comments, only: [:index]
-    resource :comment, only: [:create, :destroy]
-  end
+  resources :sinsis
+  resources :comments, only: [:index, :create, :destroy]
 
   get 'new', to: 'sinsis#new'
   get 'old', to: 'sinsis#old'

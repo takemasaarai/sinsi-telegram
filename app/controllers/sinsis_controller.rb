@@ -20,7 +20,8 @@ class SinsisController < ApplicationController
 
   def show
     @sinsi = Sinsi.find_by(id: params[:id])
-    @comments = @sinsi.comments
+    @comment = Comment.new
+    @comments = Comment.all
     @preview = Sinsi.find(params[:id])
     impressionist(@preview, nil, unique: [:session_hash])
   end
