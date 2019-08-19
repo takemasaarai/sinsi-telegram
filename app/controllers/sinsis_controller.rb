@@ -13,15 +13,15 @@ class SinsisController < ApplicationController
     render 'index'
   end
 
-  def random
+  def shuffle
     @sinsis = Sinsi.all.shuffle
     render 'index'
   end
 
   def show
     @sinsi = Sinsi.find_by(id: params[:id])
-    @comment = Comment.new
-    @comments = Comment.all
+    @comment = @sinsi.comments.build
+    @comments = @sinsi.comments.all
     @preview = Sinsi.find(params[:id])
     impressionist(@preview, nil, unique: [:session_hash])
   end
@@ -31,6 +31,11 @@ class SinsisController < ApplicationController
   end
 
   def edit
+  end
+
+  def mypage
+    @sinsis = current_user.sinsis.all.length
+    @comments = current_user.comments.all.length
   end
 
   def about

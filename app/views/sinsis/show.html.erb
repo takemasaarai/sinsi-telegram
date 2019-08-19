@@ -16,6 +16,11 @@
   <% end %>
 <% end %></h2><br />
 
+<%
+=begin%>
+ <%= button_to 'いいね！(未実装)' %>
+<%
+=end%>
 <p><b>投稿ユーザー名: </b><%= "#{user_name}" %> さん</p>
 <p><b>閲覧ユーザー数: </b><%= @preview.impressionist_count %> 人</p>
 <p><b>最終更新日: </b><%= @sinsi.updated_at.to_s.chop.chop.chop.chop.chop.chop.chop.chop.chop %></p>
@@ -29,23 +34,25 @@
       <h3><b>「 </b><%= @sinsi.word %><b> 」</b></h3>
     <% end %><br />
 
-    <h4>コメント一覧</h4><br />
-    <div id="bbs">
-      <% i = 0 %>
-      <%= "最初のコメントを投稿しませんか？" if @comments.empty? %>
-      <% @comments.each do |comment| %>
+    <h4>コメント一覧</h4>
+    <%= '<div id="bbs"><h4>最初のコメントを投稿しませんか？</h4></div>'.html_safe if @comments.empty? %>
+    <br />
+    <% i = 0 %>
+    <% @comments.each do |comment| %>
+      <div id="bbs">
         <p><%= "#{i+=1} " %>
         <span style="color: green;"><%= comment.user.name %>さん</span><%= " (投稿者)" if comment.user.name == user_name %><%= " #{comment.created_at.to_s.chop.chop.chop.chop.chop}" %></p>
         <p><%= comment.body %></p>
         <% if comment.user.name == current_user.name %>
           <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
         <% end %>
+        </div>
       <% end %>
-    </div><br />
+    <br />
 
     <%= form_for(@comment, local: true) do |form| %>
       <div class="field">
-        <%= form.text_field :body %>
+        <%= form.text_area :body, size: "50x3", placeholder: 'コメント内容(50文字以内)', maxlength: '50' %>
       </div><br />
 
       <%= form.hidden_field :sinsi_id, value: @sinsi.id %>

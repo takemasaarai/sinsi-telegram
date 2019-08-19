@@ -15,8 +15,8 @@ class CommentsController < ApplicationController
         format.html { redirect_to sinsi_path(@comment.sinsi_id), notice: 'コメントを書き込みました！' }
         format.json { render :show, status: :created, location: @sinsi }
       else
-        format.html { render :show }
-        format.json { render json: @comment.errors, status: :unprocessable_entity  }
+        format.html { redirect_to sinsi_path(@comment.sinsi_id), alert: 'コメントの書き込みに失敗しました' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
