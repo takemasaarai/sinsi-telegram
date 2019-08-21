@@ -42,8 +42,9 @@ ul.validate {
 /* Sinsis */
 
 .col-md-4 { margin-top: 60px; }
+.srow > .col-md-4 { margin-top: 20px; width: 100px; }
 
-#post {
+.post {
   color: black;
   position: absolute;
   margin-bottom: 10px;

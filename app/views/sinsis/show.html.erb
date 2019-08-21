@@ -43,8 +43,10 @@
         <p><%= "#{i+=1} " %>
         <span style="color: green;"><%= comment.user.name %>さん</span><%= " (投稿者)" if comment.user.name == user_name %><%= " #{comment.created_at.to_s.chop.chop.chop.chop.chop}" %></p>
         <p><%= comment.body %></p>
-        <% if comment.user.name == current_user.name %>
-          <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
+        <% if user_signed_in? %>
+          <% if comment.user.name == current_user.name %>
+            <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
+          <% end %>
         <% end %>
         </div>
       <% end %>

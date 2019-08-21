@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :comments
 
   get 'new', to: 'sinsis#new'
-  get 'old', to: 'sinsis#old'
+  get 'desc', to: 'sinsis#desc'
   get 'shuffle', to: 'sinsis#shuffle'
   get 'mypage', to: 'sinsis#mypage'
 

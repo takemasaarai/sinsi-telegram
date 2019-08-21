@@ -1,9 +1,28 @@
-<% provide(:title, "Mypage") %>
+<% provide(:title, "#{current_user.name}'s page") %>
 
-<h2><%= "#{current_user.name}さんのページ" %></h2>
+<h2><%= "#{current_user.name}さんのステータス" %></h2>
 <br />
-インサート 計 <%= "#{@sinsis} 回" %><br /><br />
-コメント 計 <%= "#{@comments} 回" %><br /><br />
+
+<h3>コメント履歴 ( 計 <%= "#{@comments} 回 )" %></h3>
+<% @comment_history.each do |comment| %>
+  <div id="bbs">
+    <p><%= comment.body %></p>
+      <%= link_to "削除する", comment_path(comment.id), method: :delete, data: { confirm: "削除しますか？"} %>
+    </div>
+  <% end %>
+
+<h3>インサート一覧 ( 計 <%= "#{@sinsis} 回 )" %></h3>
+<% @sinsi_history.in_groups_of(5) do |group| %>
+  <div class="srow">
+    <% group.compact.each do |sinsi| %>
+      <div class="col-md-4">
+        <p id="post"><%= link_to 'いいね数', edit_sinsi_path(sinsi) %></p>
+        <%= link_to image_tag(sinsi.picture_url(:icon)), sinsi, id: 'icon' if sinsi.picture.present? %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
  <%
 =begin%>
  被コメント 計 (未実装) 回

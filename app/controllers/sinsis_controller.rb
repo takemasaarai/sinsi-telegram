@@ -1,14 +1,14 @@
 class SinsisController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :mypage, :create, :update, :destroy]
   before_action :set_sinsi, only: [:edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  impressionist unique: [:session_hash]
+  impressionist unique: [:user_id]
 
   def index
     @sinsis = Sinsi.all.order(id: "desc")
   end
 
-  def old
+  def desc
     @sinsis = Sinsi.all
     render 'index'
   end
@@ -23,7 +23,7 @@ class SinsisController < ApplicationController
     @comment = @sinsi.comments.build
     @comments = @sinsi.comments.all
     @preview = Sinsi.find(params[:id])
-    impressionist(@preview, nil, unique: [:session_hash])
+    impressionist(@preview, nil, unique: [:user_id])
   end
 
   def new
@@ -36,6 +36,10 @@ class SinsisController < ApplicationController
   def mypage
     @sinsis = current_user.sinsis.all.length
     @comments = current_user.comments.all.length
+    @sinsi = current_user.sinsis.build
+    @sinsi_history = current_user.sinsis.all
+    @comment = current_user.comments.build
+    @comment_history = current_user.comments.all
   end
 
   def about
