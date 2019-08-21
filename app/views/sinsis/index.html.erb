@@ -1,6 +1,13 @@
 <% provide(:title, "Home") %>
 
 <h2>投稿画像一覧</h2>
+<% unless @search.nil? %>
+<%= search_form_for @s do |f| %>
+  <%= f.label :title_or_word_cont, "キーワード検索(タイトル&ひとこと)" %>
+  <%= f.search_field :title_or_word_cont %>
+  <%= f.submit %>
+<% end %>
+<% end %>
 
 <% @sinsis.in_groups_of(3) do |group| %>
   <div class="row">

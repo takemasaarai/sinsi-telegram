@@ -49,6 +49,7 @@
           <!-- Menu -->
           <ul class="nav navbar-nav">
             <li ><%= link_to 'desc', desc_path %></li>
+            <li ><%= link_to 'search', search_path %></li>
             <li ><%= link_to 'Shuffle', shuffle_path %></li>
             <li ><%= link_to 'Insert', new_sinsi_path if user_signed_in? %></li>
             <li ><%= link_to 'Mypage', mypage_path if user_signed_in? %></li>

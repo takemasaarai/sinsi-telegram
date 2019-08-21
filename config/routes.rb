@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :sinsis
+  resources :sinsis do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :comments
 
   get 'new', to: 'sinsis#new'
   get 'desc', to: 'sinsis#desc'
+  get 'search', to: 'sinsis#search'
   get 'shuffle', to: 'sinsis#shuffle'
   get 'mypage', to: 'sinsis#mypage'
 

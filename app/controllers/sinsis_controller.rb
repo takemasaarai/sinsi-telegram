@@ -8,6 +8,13 @@ class SinsisController < ApplicationController
     @sinsis = Sinsi.all.order(id: "desc")
   end
 
+  def search
+    @search = 0
+    @s        = Sinsi.search(params[:q])
+    @sinsis = @s.result(distinct: true)
+    render 'index'
+  end
+
   def desc
     @sinsis = Sinsi.all
     render 'index'
@@ -37,9 +44,9 @@ class SinsisController < ApplicationController
     @sinsis = current_user.sinsis.all.length
     @comments = current_user.comments.all.length
     @sinsi = current_user.sinsis.build
-    @sinsi_history = current_user.sinsis.all
+    @sinsi_history = current_user.sinsis.all.order(id: "desc")
     @comment = current_user.comments.build
-    @comment_history = current_user.comments.all
+    @comment_history = current_user.comments.all.order(id: "desc")
   end
 
   def about

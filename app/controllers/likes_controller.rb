@@ -1,14 +1,15 @@
 class LikesController < ApplicationController
 
   def create
-    @like = Like.new(user_id: current_user.id, sinsi_id: params[:id])
-    @like.save
-    redirect_to("/sinsis/#{params[:id]}/show")
+    @like = Like.create(user_id: current_user.id, sinsi_id: params[:sinsi_id])
+    @likes = Like.where(sinsi_id: params[:sinsi_id])
+    @sinsis = Sinsi.all
   end
 
   def destroy
-    @like = Like.find_by(user_id: current_user.id, sinsi_id: params[:id])
-    @like.destroy
-    redirect_to("/sinsis/#{params[:id]}/show")
+    like = Like.find_by(user_id: current_user.id, sinsi_id: params[:sinsi_id])
+    like.destroy
+    @likes = Like.where(sinsi_id: params[:sinsi_id])
+    @sinsis = Sinsi.all
   end
 end

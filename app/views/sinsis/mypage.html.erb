@@ -16,7 +16,7 @@
   <div class="srow">
     <% group.compact.each do |sinsi| %>
       <div class="col-md-4">
-        <p id="post"><%= link_to 'いいね数', edit_sinsi_path(sinsi) %></p>
+        <p id="post"><%= link_to '編集する', edit_sinsi_path(sinsi) %></p>
         <%= link_to image_tag(sinsi.picture_url(:icon)), sinsi, id: 'icon' if sinsi.picture.present? %>
       </div>
     <% end %>
